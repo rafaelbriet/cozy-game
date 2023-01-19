@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d4174bc9a6ae44786bf54994b0cc79, type: 3}
+  m_Name: Hair_Gentleman
+  m_EditorClassIdentifier: 
+  _itemName: Gentleman
+  _price: 10
+  _icon: {fileID: -555741100, guid: 297b6f8520906c54c8e4b81a85ab48c3, type: 3}
+  _equipmentType: 0
+  _spriteLibrary: {fileID: 7108339969198208228, guid: eddbfe40c781b8744ba7550e20ca698d, type: 3}

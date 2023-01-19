@@ -3776,6 +3776,7 @@ MonoBehaviour:
   _items:
   - {fileID: 11400000, guid: fcfce83208ad0b84899e2d5bf2415fce, type: 2}
   - {fileID: 11400000, guid: a6b30f6271c028942a7c944e3db201c0, type: 2}
+  - {fileID: 11400000, guid: bc3b6d09151a61746a271a95d71786b1, type: 2}
   _equipmentSlots:
   - {fileID: 929375819}
   - {fileID: 2143709930}

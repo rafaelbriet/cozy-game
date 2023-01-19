@@ -28,11 +28,18 @@ namespace CozyGame
         {
             EquipmentSlot equipmentSlot = GetEquipmentSlot(item.EquipmentType);
 
-            if (equipmentSlot != null)
+            if (equipmentSlot == null)
             {
-                equipmentSlot.Equip(item);
-                RemoveItem(item);
+                return;
             }
+
+            if (equipmentSlot.Item != null)
+            {
+                Unequipe(equipmentSlot);
+            }
+
+            equipmentSlot.Equip(item);
+            RemoveItem(item);
         }
 
         public void Unequipe(EquipmentSlot equipmentSlot)
