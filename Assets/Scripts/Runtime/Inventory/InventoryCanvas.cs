@@ -7,6 +7,13 @@ namespace CozyGame
     [RequireComponent(typeof(CanvasGroup))]
     public class InventoryCanvas : MonoBehaviour
     {
+        [SerializeField]
+        private Inventory _inventory;
+        [SerializeField]
+        private RectTransform _itemsContainer;
+        [SerializeField]
+        private InventoryItemSlot _inventorySlotPrefab;
+
         private CanvasGroup _canvasGroup;
 
         public bool IsInteractable { get => _canvasGroup.interactable; }
@@ -15,6 +22,11 @@ namespace CozyGame
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             DisplayInventory(false);
+        }
+
+        private void Start()
+        {
+            UpdateInventoryContent();
         }
 
         public void DisplayInventory(bool display)
@@ -30,6 +42,25 @@ namespace CozyGame
                 _canvasGroup.alpha = 0;
                 _canvasGroup.interactable = false;
                 _canvasGroup.blocksRaycasts = false;
+            }
+        }
+
+        private void UpdateInventoryContent()
+        {
+            CleanItemsContainer();
+
+            foreach (Item item in _inventory.Items)
+            {
+                InventoryItemSlot itemSlot = Instantiate(_inventorySlotPrefab, _itemsContainer);
+                itemSlot.Init(item);
+            }
+        }
+
+        private void CleanItemsContainer()
+        {
+            foreach (RectTransform item in _itemsContainer)
+            {
+                Destroy(item.gameObject);
             }
         }
     }

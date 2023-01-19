@@ -8,6 +8,8 @@ namespace CozyGame
     public class Item : ScriptableObject
     {
         [SerializeField]
+        private string _itemName;
+        [SerializeField]
         private float _price;
         [SerializeField]
         private Sprite _icon;
@@ -16,6 +18,7 @@ namespace CozyGame
         [SerializeField]
         private SpriteLibraryAsset _spriteLibrary;
 
+        public string ItemName => _itemName;
         public float Price => _price;
         public Sprite Icon => _icon;
         public EquipmentSlot EquipmentSlot => _equipmentSlot;

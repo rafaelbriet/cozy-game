@@ -434,6 +434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b111c036325838499353783523f0afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inventory: {fileID: 1309728055}
+  _itemsContainer: {fileID: 840697859}
+  _inventorySlotPrefab: {fileID: 183214761303889707, guid: fca440e94e6757c43bc20b8b4041621b, type: 3}
 --- !u!225 &177537208
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3534,6 +3537,7 @@ GameObject:
   - component: {fileID: 1309728054}
   - component: {fileID: 1309728053}
   - component: {fileID: 1309728052}
+  - component: {fileID: 1309728055}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3623,6 +3627,22 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1309728055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309728050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911d9c475e550d348baf8ca3f5d0e081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - {fileID: 11400000, guid: fcfce83208ad0b84899e2d5bf2415fce, type: 2}
+  - {fileID: 11400000, guid: a6b30f6271c028942a7c944e3db201c0, type: 2}
+  - {fileID: 11400000, guid: 0fe06e4ba9eda2d49a999999996adb0e, type: 2}
 --- !u!1 &1353529266
 GameObject:
   m_ObjectHideFlags: 0

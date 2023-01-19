@@ -7,5 +7,7 @@ namespace CozyGame
     {
         [SerializeField]
         private List<Item> _items;
+
+        public List<Item> Items => _items;
     }
 }
