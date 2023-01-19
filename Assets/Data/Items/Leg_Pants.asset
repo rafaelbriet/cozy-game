@@ -15,5 +15,5 @@ MonoBehaviour:
   _itemName: Pants
   _price: 10
   _icon: {fileID: 1089300455, guid: b61b349089cf9004e8ea84744698a25b, type: 3}
-  _equipmentSlot: 3
+  _equipmentType: 3
   _spriteLibrary: {fileID: 7108339969198208228, guid: 3c928e03e57c49743a65a5f4a48606fc, type: 3}

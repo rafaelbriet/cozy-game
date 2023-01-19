@@ -15,5 +15,5 @@ MonoBehaviour:
   _itemName: Shoes
   _price: 10
   _icon: {fileID: -1194829521, guid: b5e6b0be0b565f04699a16ae8a02f993, type: 3}
-  _equipmentSlot: 4
+  _equipmentType: 4
   _spriteLibrary: {fileID: 7108339969198208228, guid: 59c4e3887e42348499b2130908892221, type: 3}

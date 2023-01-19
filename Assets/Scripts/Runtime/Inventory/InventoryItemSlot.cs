@@ -13,10 +13,23 @@ namespace CozyGame
         [SerializeField]
         private Image _itemIcon;
 
-        public void Init(Item item)
+        private Item _item;
+        private Inventory _inventory;
+        private InventoryCanvas _inventoryCanvas;
+
+        public void Init(Item item, Inventory inventory, InventoryCanvas inventoryCanvas)
         {
+            _item = item;
+            _inventory = inventory;
+            _inventoryCanvas = inventoryCanvas;
             _itemName.SetText(item.ItemName);
             _itemIcon.sprite = item.Icon;
+        }
+
+        public void Equip()
+        {
+            _inventory.Equip(_item);
+            _inventoryCanvas.UpdateInventoryContent();
         }
     }
 }

@@ -45,14 +45,14 @@ namespace CozyGame
             }
         }
 
-        private void UpdateInventoryContent()
+        public void UpdateInventoryContent()
         {
             CleanItemsContainer();
 
             foreach (Item item in _inventory.Items)
             {
                 InventoryItemSlot itemSlot = Instantiate(_inventorySlotPrefab, _itemsContainer);
-                itemSlot.Init(item);
+                itemSlot.Init(item, _inventory, this);
             }
         }
 
