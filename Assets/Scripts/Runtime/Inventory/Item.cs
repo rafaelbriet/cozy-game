@@ -14,14 +14,14 @@ namespace CozyGame
         [SerializeField]
         private Sprite _icon;
         [SerializeField]
-        private EquipmentSlot _equipmentSlot;
+        private EquipmentType _equipmentType;
         [SerializeField]
         private SpriteLibraryAsset _spriteLibrary;
 
         public string ItemName => _itemName;
         public float Price => _price;
         public Sprite Icon => _icon;
-        public EquipmentSlot EquipmentSlot => _equipmentSlot;
+        public EquipmentType EquipmentType => _equipmentType;
         public SpriteLibraryAsset SpriteLibrary => _spriteLibrary;
     }
 }

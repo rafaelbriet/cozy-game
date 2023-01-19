@@ -1,6 +1,6 @@
 ﻿namespace CozyGame
 {
-    public enum EquipmentSlot
+    public enum EquipmentType
     {
         Head,
         Face,
