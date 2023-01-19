@@ -10,6 +10,8 @@ namespace CozyGame
     {
         [SerializeField]
         private float _walkSpeed = 5.0f;
+        [SerializeField]
+        private Animator _animator;
 
         private Rigidbody2D _rigidbody2D;
         private Vector2 _moveDirection;
@@ -28,6 +30,17 @@ namespace CozyGame
         public void OnMove(InputValue value)
         {
             _moveDirection = value.Get<Vector2>();
+
+            if (_moveDirection != Vector2.zero)
+            {
+                _animator.SetFloat("Horizontal", _moveDirection.x);
+                _animator.SetFloat("Vertical", _moveDirection.y);
+                _animator.SetBool("IsWalking", true);
+            }
+            else
+            {
+                _animator.SetBool("IsWalking", false);
+            }
         }
     }
 }
