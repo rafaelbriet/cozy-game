@@ -37,5 +37,16 @@ namespace CozyGame
                 _itemIcon.sprite = _equipmentSlot.Item.Icon;
             }
         }
+
+        public void Unequip()
+        {
+            if (_equipmentSlot.Item == null)
+            {
+                return;
+            }
+
+            _inventory.Unequipe(_equipmentSlot);
+            _inventoryCanvas.UpdateInventoryContent();
+        }
     }
 }

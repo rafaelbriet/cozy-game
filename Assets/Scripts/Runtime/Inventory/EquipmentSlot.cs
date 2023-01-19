@@ -48,5 +48,11 @@ namespace CozyGame
             _spriteLibrary.spriteLibraryAsset = item.SpriteLibrary;
             gameObject.SetActive(true);
         }
+
+        public void Unequip()
+        {
+            _item = null;
+            gameObject.SetActive(false);
+        }
     }
 }

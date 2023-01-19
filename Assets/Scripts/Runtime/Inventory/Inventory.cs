@@ -19,6 +19,11 @@ namespace CozyGame
             _items.Remove(item);
         }
 
+        public void AddItem(Item item)
+        {
+            Items.Add(item);
+        }
+
         public void Equip(Item item)
         {
             EquipmentSlot equipmentSlot = GetEquipmentSlot(item.EquipmentType);
@@ -28,6 +33,12 @@ namespace CozyGame
                 equipmentSlot.Equip(item);
                 RemoveItem(item);
             }
+        }
+
+        public void Unequipe(EquipmentSlot equipmentSlot)
+        {
+            AddItem(equipmentSlot.Item);
+            equipmentSlot.Unequip();
         }
 
         private EquipmentSlot GetEquipmentSlot(EquipmentType equipmentType)
