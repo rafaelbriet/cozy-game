@@ -13,6 +13,10 @@ namespace CozyGame
         private RectTransform _itemsContainer;
         [SerializeField]
         private InventoryItemSlot _inventorySlotPrefab;
+        [SerializeField]
+        private RectTransform _equipementContainer;
+        [SerializeField]
+        private InventoryEquipmentSlot _equipementSlotPrefab;
 
         private CanvasGroup _canvasGroup;
 
@@ -54,6 +58,14 @@ namespace CozyGame
                 InventoryItemSlot itemSlot = Instantiate(_inventorySlotPrefab, _itemsContainer);
                 itemSlot.Init(item, _inventory, this);
             }
+
+            CleanEquipmentContainer();
+
+            foreach (EquipmentSlot slot in _inventory.EquipmentSlots)
+            {
+                InventoryEquipmentSlot equipmentSlot = Instantiate(_equipementSlotPrefab, _equipementContainer);
+                equipmentSlot.Init(slot, _inventory, this);
+            }
         }
 
         private void CleanItemsContainer()
@@ -61,6 +73,14 @@ namespace CozyGame
             foreach (RectTransform item in _itemsContainer)
             {
                 Destroy(item.gameObject);
+            }
+        }
+
+        private void CleanEquipmentContainer()
+        {
+            foreach (RectTransform equipment in _equipementContainer)
+            {
+                Destroy(equipment.gameObject);
             }
         }
     }

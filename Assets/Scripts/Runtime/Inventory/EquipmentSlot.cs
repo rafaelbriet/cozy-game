@@ -15,6 +15,7 @@ namespace CozyGame
         private SpriteLibrary _spriteLibrary;
 
         public EquipmentType EquipmentType => _equipmentType;
+        public Item Item => _item;
 
         private void Awake()
         {
@@ -43,6 +44,7 @@ namespace CozyGame
 
         public void Equip(Item item)
         {
+            _item = item;
             _spriteLibrary.spriteLibraryAsset = item.SpriteLibrary;
             gameObject.SetActive(true);
         }

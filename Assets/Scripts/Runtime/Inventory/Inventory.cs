@@ -12,6 +12,7 @@ namespace CozyGame
         private List<EquipmentSlot> _equipmentSlots;
 
         public List<Item> Items => _items;
+        public List<EquipmentSlot> EquipmentSlots => _equipmentSlots;
 
         public void RemoveItem(Item item)
         {
