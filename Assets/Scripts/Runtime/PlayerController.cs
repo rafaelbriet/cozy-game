@@ -12,6 +12,8 @@ namespace CozyGame
         private float _walkSpeed = 5.0f;
         [SerializeField]
         private Animator _animator;
+        [SerializeField]
+        private InventoryCanvas _inventoryCanvas;
 
         private Rigidbody2D _rigidbody2D;
         private Vector2 _moveDirection;
@@ -41,6 +43,17 @@ namespace CozyGame
             {
                 _animator.SetBool("IsWalking", false);
             }
+        }
+
+        public void OnInventory()
+        {
+            if (_inventoryCanvas == null)
+            {
+                Debug.Log("Inventory is not available.", this);
+                return;
+            }
+
+            _inventoryCanvas.DisplayInventory(!_inventoryCanvas.IsInteractable);
         }
     }
 }

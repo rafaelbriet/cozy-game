@@ -354,6 +354,8 @@ GameObject:
   - component: {fileID: 177537204}
   - component: {fileID: 177537206}
   - component: {fileID: 177537205}
+  - component: {fileID: 177537208}
+  - component: {fileID: 177537207}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: Untagged
@@ -420,6 +422,30 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &177537207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177537203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b111c036325838499353783523f0afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &177537208
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177537203}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &228734991 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7858008544060332034, guid: fca440e94e6757c43bc20b8b4041621b, type: 3}
@@ -3545,6 +3571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeed: 5
   _animator: {fileID: 1908842927}
+  _inventoryCanvas: {fileID: 177537207}
 --- !u!50 &1309728053
 Rigidbody2D:
   serializedVersion: 4
@@ -3882,7 +3909,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1583191807}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 177537207}
+        m_TargetAssemblyTypeName: CozyGame.InventoryCanvas, Assembly-CSharp
+        m_MethodName: DisplayInventory
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1583191807
 MonoBehaviour:
   m_ObjectHideFlags: 0
