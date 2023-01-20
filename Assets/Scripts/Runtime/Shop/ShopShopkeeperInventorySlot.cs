@@ -32,7 +32,9 @@ namespace CozyGame
         public void Buy()
         {
             _shopkeeperInventory.RemoveItem(_item);
+            _shopkeeperInventory.AddMoney(_item.Price);
             _playerIventory.AddItem(_item);
+            _playerIventory.RemoveMoney(_item.Price);
             _shoopingCanvas.UpdateInventoryContent();
         }
     }

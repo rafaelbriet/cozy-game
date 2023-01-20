@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace CozyGame
@@ -12,9 +13,13 @@ namespace CozyGame
         [SerializeField]
         private ShopShopkeeperInventorySlot _shopkeeperInventorySlot;
         [SerializeField]
+        private TextMeshProUGUI _shopkeeperMoney;
+        [SerializeField]
         private RectTransform _playerInventoryContainer;
         [SerializeField]
         private ShopPlayerInventorySlot _playerInventorySlot;
+        [SerializeField]
+        private TextMeshProUGUI _playerMoney;
 
         private CanvasGroup _canvasGroup;
         private Inventory _shopkeeperInventory;
@@ -62,6 +67,8 @@ namespace CozyGame
                 shopkeeperInventorySlot.Init(item, _playerInventory, _shopkeeperInventory, this);
             }
 
+            _shopkeeperMoney.SetText(_shopkeeperInventory.Money.ToString());
+
             CleanPlayerInventoryContainer();
 
             foreach (Item item in _playerInventory.Items)
@@ -69,6 +76,8 @@ namespace CozyGame
                 ShopPlayerInventorySlot playerInventorySlot = Instantiate(_playerInventorySlot, _playerInventoryContainer);
                 playerInventorySlot.Init(item, _playerInventory, _shopkeeperInventory, this);
             }
+
+            _playerMoney.SetText(_playerInventory.Money.ToString());
         }
 
         private void CleanShopkeeperInventoryContainer()

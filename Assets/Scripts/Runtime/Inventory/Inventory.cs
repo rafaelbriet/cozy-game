@@ -7,12 +7,15 @@ namespace CozyGame
     public class Inventory : MonoBehaviour
     {
         [SerializeField]
+        private float _money;
+        [SerializeField]
         private List<Item> _items;
         [SerializeField]
         private List<EquipmentSlot> _equipmentSlots;
 
         public List<Item> Items => _items;
         public List<EquipmentSlot> EquipmentSlots => _equipmentSlots;
+        public float Money => _money;
 
         public void RemoveItem(Item item)
         {
@@ -22,6 +25,16 @@ namespace CozyGame
         public void AddItem(Item item)
         {
             Items.Add(item);
+        }
+
+        public void AddMoney(float amount)
+        {
+            _money += amount;
+        }
+
+        public void RemoveMoney(float amount)
+        {
+            _money -= amount;
         }
 
         public void Equip(Item item)
