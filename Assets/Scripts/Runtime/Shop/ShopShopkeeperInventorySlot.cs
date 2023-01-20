@@ -13,11 +13,27 @@ namespace CozyGame
         [SerializeField]
         private TextMeshProUGUI _itemPrice;
 
-        public void Init(Item item)
+        private Item _item;
+        private Inventory _playerIventory;
+        private Inventory _shopkeeperInventory;
+        private ShoppingCanvas _shoopingCanvas;
+
+        public void Init(Item item, Inventory playerInventory, Inventory shopkeeperInventory, ShoppingCanvas shoppingCanvas)
         {
+            _item = item;
+            _playerIventory = playerInventory;
+            _shopkeeperInventory = shopkeeperInventory;
+            _shoopingCanvas = shoppingCanvas;
             _itemIcon.sprite = item.Icon;
             _itemName.SetText(item.ItemName);
             _itemPrice.SetText(item.Price.ToString());
+        }
+
+        public void Buy()
+        {
+            _shopkeeperInventory.RemoveItem(_item);
+            _playerIventory.AddItem(_item);
+            _shoopingCanvas.UpdateInventoryContent();
         }
     }
 }

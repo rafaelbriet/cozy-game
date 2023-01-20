@@ -52,14 +52,14 @@ namespace CozyGame
             UpdateInventoryContent();
         }
 
-        private void UpdateInventoryContent()
+        public void UpdateInventoryContent()
         {
             CleanShopkeeperInventoryContainer();
 
             foreach (Item item in _shopkeeperInventory.Items)
             {
                 ShopShopkeeperInventorySlot shopkeeperInventorySlot = Instantiate(_shopkeeperInventorySlot, _shopkeeperInventoryContainer);
-                shopkeeperInventorySlot.Init(item);
+                shopkeeperInventorySlot.Init(item, _playerInventory, _shopkeeperInventory, this);
             }
 
             CleanPlayerInventoryContainer();

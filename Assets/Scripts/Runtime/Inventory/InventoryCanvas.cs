@@ -40,6 +40,7 @@ namespace CozyGame
                 _canvasGroup.alpha = 1;
                 _canvasGroup.interactable = true;
                 _canvasGroup.blocksRaycasts = true;
+                UpdateInventoryContent();
             }
             else
             {
