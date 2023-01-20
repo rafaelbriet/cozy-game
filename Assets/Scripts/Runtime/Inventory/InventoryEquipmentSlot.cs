@@ -42,11 +42,17 @@ namespace CozyGame
         {
             if (_equipmentSlot.Item == null)
             {
+                SoundEffectsManager.Instance.PlayCancel();
                 return;
             }
 
             _inventory.Unequipe(_equipmentSlot);
             _inventoryCanvas.UpdateInventoryContent();
+        }
+
+        public void OnPointEnter()
+        {
+            SoundEffectsManager.Instance.PlayButtonHover();
         }
     }
 }

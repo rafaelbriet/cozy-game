@@ -31,5 +31,10 @@ namespace CozyGame
             _inventory.Equip(_item);
             _inventoryCanvas.UpdateInventoryContent();
         }
+
+        public void OnPointEnter()
+        {
+            SoundEffectsManager.Instance.PlayButtonHover();
+        }
     }
 }

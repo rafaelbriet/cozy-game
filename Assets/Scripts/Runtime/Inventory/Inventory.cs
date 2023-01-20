@@ -48,17 +48,17 @@ namespace CozyGame
 
             if (equipmentSlot.Item != null)
             {
-                Unequipe(equipmentSlot);
+                Unequipe(equipmentSlot, false);
             }
 
             equipmentSlot.Equip(item);
             RemoveItem(item);
         }
 
-        public void Unequipe(EquipmentSlot equipmentSlot)
+        public void Unequipe(EquipmentSlot equipmentSlot, bool playSoundEffects = true)
         {
             AddItem(equipmentSlot.Item);
-            equipmentSlot.Unequip();
+            equipmentSlot.Unequip(playSoundEffects);
         }
 
         private EquipmentSlot GetEquipmentSlot(EquipmentType equipmentType)

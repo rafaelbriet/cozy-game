@@ -42,6 +42,12 @@ namespace CozyGame
             _playerIventory.AddItem(_item);
             _playerIventory.RemoveMoney(_item.Price);
             _shoopingCanvas.UpdateInventoryContent();
+            SoundEffectsManager.Instance.PlayBuyItem();
+        }
+
+        public void OnPointEnter()
+        {
+            SoundEffectsManager.Instance.PlayButtonHover();
         }
     }
 }

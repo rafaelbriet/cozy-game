@@ -23,7 +23,7 @@ namespace CozyGame
 
             if (_item != null)
             {
-                Equip(_item);
+                Equip(_item, false);
             }
             else
             {
@@ -42,17 +42,27 @@ namespace CozyGame
             }
         }
 
-        public void Equip(Item item)
+        public void Equip(Item item, bool playSoundEffects = true)
         {
             _item = item;
             _spriteLibrary.spriteLibraryAsset = item.SpriteLibrary;
             gameObject.SetActive(true);
+            
+            if (playSoundEffects)
+            {
+                SoundEffectsManager.Instance.PlayEquipItem(); 
+            }
         }
 
-        public void Unequip()
+        public void Unequip(bool playSoundEffects = true)
         {
             _item = null;
             gameObject.SetActive(false);
+            
+            if (playSoundEffects)
+            {
+                SoundEffectsManager.Instance.PlayUnequipItem(); 
+            }
         }
     }
 }

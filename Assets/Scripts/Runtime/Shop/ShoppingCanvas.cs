@@ -30,19 +30,34 @@ namespace CozyGame
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
+            DisplayShop(false, false);
+        }
+
+        public void Close()
+        {
             DisplayShop(false);
         }
 
-        public void DisplayShop(bool display)
+        public void DisplayShop(bool display, bool playSoundEffects = true)
         {
             if (display)
             {
                 _canvasGroup.alpha = 1;
                 _canvasGroup.interactable = true;
                 _canvasGroup.blocksRaycasts = true;
+                
+                if (playSoundEffects)
+                {
+                    SoundEffectsManager.Instance.PlayOpenWindow(); 
+                }
             }
             else
             {
+                if (playSoundEffects && IsInteractable)
+                {
+                    SoundEffectsManager.Instance.PlayCloseWindow();
+                }
+
                 _canvasGroup.alpha = 0;
                 _canvasGroup.interactable = false;
                 _canvasGroup.blocksRaycasts = false;

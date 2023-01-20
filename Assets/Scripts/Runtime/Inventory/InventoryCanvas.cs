@@ -25,7 +25,7 @@ namespace CozyGame
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
-            DisplayInventory(false);
+            DisplayInventory(false, false);
         }
 
         private void Start()
@@ -33,7 +33,12 @@ namespace CozyGame
             UpdateInventoryContent();
         }
 
-        public void DisplayInventory(bool display)
+        public void Close()
+        {
+            DisplayInventory(false);
+        }
+
+        public void DisplayInventory(bool display, bool playSoundEffects = true)
         {
             if (display)
             {
@@ -41,12 +46,22 @@ namespace CozyGame
                 _canvasGroup.interactable = true;
                 _canvasGroup.blocksRaycasts = true;
                 UpdateInventoryContent();
+
+                if (playSoundEffects)
+                {
+                    SoundEffectsManager.Instance.PlayOpenWindow();
+                }
             }
             else
             {
                 _canvasGroup.alpha = 0;
                 _canvasGroup.interactable = false;
                 _canvasGroup.blocksRaycasts = false;
+
+                if (playSoundEffects)
+                {
+                    SoundEffectsManager.Instance.PlayCloseWindow(); 
+                }
             }
         }
 
