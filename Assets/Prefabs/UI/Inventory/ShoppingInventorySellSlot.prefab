@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 7368858818077855407}
   - component: {fileID: 3693787623168770114}
   - component: {fileID: 3693787623168770112}
+  - component: {fileID: 1995080618672033321}
   m_Layer: 5
   m_Name: ShoppingInventorySellSlot
   m_TagString: Untagged
@@ -504,6 +505,20 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1995080618672033321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3098397168231267465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da8bd92911203e40b25d510b71da2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemIcon: {fileID: 7561011884840757803}
+  _itemName: {fileID: 5589204007747381280}
 --- !u!1 &3220615985166375606
 GameObject:
   m_ObjectHideFlags: 0

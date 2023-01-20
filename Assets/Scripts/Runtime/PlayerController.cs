@@ -11,6 +11,8 @@ namespace CozyGame
         [SerializeField]
         private float _walkSpeed = 5.0f;
         [SerializeField]
+        private Inventory _inventory;
+        [SerializeField]
         private Animator _animator;
         [SerializeField]
         private InventoryCanvas _inventoryCanvas;
@@ -89,7 +91,7 @@ namespace CozyGame
 
             if (_isInsideShopTrigger && !_shoppingCanvas.IsInteractable)
             {
-                _shoppingCanvas.DisplayShop(true, _shopkeeprInventory);
+                _shoppingCanvas.DisplayShop(true, _shopkeeprInventory, _inventory);
             }
         }
     }

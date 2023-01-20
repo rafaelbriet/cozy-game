@@ -1748,6 +1748,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shopkeeperInventoryContainer: {fileID: 1905459607}
   _shopkeeperInventorySlot: {fileID: -1512704701517744418, guid: fb61cfeec6c4d654c9325aba93920a19, type: 3}
+  _playerInventoryContainer: {fileID: 975877074}
+  _playerInventorySlot: {fileID: 1995080618672033321, guid: 82ed9ec6ee51c1b4baaf08d19344817c, type: 3}
 --- !u!1 &473755472
 GameObject:
   m_ObjectHideFlags: 0
@@ -7446,6 +7448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkSpeed: 5
+  _inventory: {fileID: 1309728055}
   _animator: {fileID: 1908842927}
   _inventoryCanvas: {fileID: 177537207}
   _shoppingCanvas: {fileID: 433202833}

@@ -11,9 +11,14 @@ namespace CozyGame
         private RectTransform _shopkeeperInventoryContainer;
         [SerializeField]
         private ShopShopkeeperInventorySlot _shopkeeperInventorySlot;
+        [SerializeField]
+        private RectTransform _playerInventoryContainer;
+        [SerializeField]
+        private ShopPlayerInventorySlot _playerInventorySlot;
 
         private CanvasGroup _canvasGroup;
         private Inventory _shopkeeperInventory;
+        private Inventory _playerInventory;
 
         public bool IsInteractable => _canvasGroup.interactable;
 
@@ -39,10 +44,11 @@ namespace CozyGame
             }
         }
 
-        public void DisplayShop(bool display, Inventory shopkeeperInventory)
+        public void DisplayShop(bool display, Inventory shopkeeperInventory, Inventory playerInventory)
         {
             DisplayShop(display);
             _shopkeeperInventory = shopkeeperInventory;
+            _playerInventory = playerInventory;
             UpdateInventoryContent();
         }
 
@@ -55,11 +61,27 @@ namespace CozyGame
                 ShopShopkeeperInventorySlot shopkeeperInventorySlot = Instantiate(_shopkeeperInventorySlot, _shopkeeperInventoryContainer);
                 shopkeeperInventorySlot.Init(item);
             }
+
+            CleanPlayerInventoryContainer();
+
+            foreach (Item item in _playerInventory.Items)
+            {
+                ShopPlayerInventorySlot playerInventorySlot = Instantiate(_playerInventorySlot, _playerInventoryContainer);
+                playerInventorySlot.Init(item);
+            }
         }
 
         private void CleanShopkeeperInventoryContainer()
         {
             foreach (RectTransform slot in _shopkeeperInventoryContainer)
+            {
+                Destroy(slot.gameObject);
+            }
+        }
+
+        private void CleanPlayerInventoryContainer()
+        {
+            foreach (RectTransform slot in _playerInventoryContainer)
             {
                 Destroy(slot.gameObject);
             }
