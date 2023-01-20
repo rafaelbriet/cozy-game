@@ -22,6 +22,8 @@ namespace CozyGame
         private AudioClip[] _footstepsSoundEffect;
         [SerializeField]
         private AudioSource _audioSource;
+        [SerializeField]
+        private PauseMenu _pauseMenu;
 
         private PlayerInput _playerInput;
         private Rigidbody2D _rigidbody2D;
@@ -41,6 +43,8 @@ namespace CozyGame
             _shoppingCanvas.ShoppingOpened += OnUIOpened;
             _inventoryCanvas.InventoryClosed += OnUIClosed;
             _shoppingCanvas.ShoppingClosed += OnUIClosed;
+            _pauseMenu.Opened += OnPauseMenuOpened;
+            _pauseMenu.Closed += OnPauseMenuClosed;
         }
 
         private void OnDisable()
@@ -49,6 +53,8 @@ namespace CozyGame
             _shoppingCanvas.ShoppingOpened -= OnUIOpened;
             _inventoryCanvas.InventoryClosed -= OnUIClosed;
             _shoppingCanvas.ShoppingClosed -= OnUIClosed;
+            _pauseMenu.Opened -= OnPauseMenuOpened;
+            _pauseMenu.Closed -= OnPauseMenuClosed;
         }
 
         private void FixedUpdate()
@@ -123,6 +129,28 @@ namespace CozyGame
             _inventoryCanvas.DisplayInventory(false);
         }
 
+        public void OnPause()
+        {
+            if (_pauseMenu == null)
+            {
+                Debug.Log("Cannot pause now.", this);
+                return;
+            }
+
+            _pauseMenu.Pause();
+        }
+
+        public void OnUnpause()
+        {
+            if (_pauseMenu == null)
+            {
+                Debug.LogError("Cannot unpause.", this);
+                return;
+            }
+
+            _pauseMenu.Unpause();
+        }
+
         public void PlayFootstep()
         {
             AudioClip clip = _footstepsSoundEffect[Random.Range(0, _footstepsSoundEffect.Length)];
@@ -136,7 +164,17 @@ namespace CozyGame
 
         private void OnUIOpened()
         {
-            _playerInput.SwitchCurrentActionMap("UI");
+            _playerInput.SwitchCurrentActionMap("Inventory");
+        }
+
+        private void OnPauseMenuOpened()
+        {
+            _playerInput.SwitchCurrentActionMap("Pause");
+        }
+
+        private void OnPauseMenuClosed()
+        {
+            _playerInput.SwitchCurrentActionMap("Gameplay");
         }
     }
 }

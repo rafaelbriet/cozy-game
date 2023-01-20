@@ -23,6 +23,10 @@ namespace CozyGame
         private AudioClip _buyItem;
         [SerializeField]
         private AudioClip _cancel;
+        [SerializeField]
+        private AudioClip _paused;
+        [SerializeField]
+        private AudioClip _unpaused;
 
         private AudioSource _audioSource;
 
@@ -70,6 +74,16 @@ namespace CozyGame
         public void PlayCancel()
         {
             _audioSource.PlayOneShot(_cancel);
+        }
+
+        public void PlayPaused()
+        {
+            _audioSource.PlayOneShot(_paused);
+        }
+
+        public void PlayUnpause()
+        {
+            _audioSource.PlayOneShot(_unpaused);
         }
     }
 }

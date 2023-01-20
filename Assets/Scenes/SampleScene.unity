@@ -237,9 +237,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 904502686}
-        m_TargetAssemblyTypeName: CozyGame.ShoppingCanvas, Assembly-CSharp
-        m_MethodName: Close
+      - m_Target: {fileID: 904502692}
+        m_TargetAssemblyTypeName: CozyGame.PauseMenu, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1841,7 +1841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1.9999962}
+  m_AnchoredPosition: {x: 0, y: -2}
   m_SizeDelta: {x: 0, y: -4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &317238135
@@ -9295,9 +9295,9 @@ GameObject:
   - component: {fileID: 904502691}
   - component: {fileID: 904502690}
   - component: {fileID: 904502689}
-  - component: {fileID: 904502686}
   - component: {fileID: 904502688}
   - component: {fileID: 904502687}
+  - component: {fileID: 904502692}
   m_Layer: 5
   m_Name: PauseCanvas
   m_TagString: Untagged
@@ -9326,24 +9326,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &904502686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904502684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9762e7b171ec8b4429dc0b3378ba341a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shopkeeperInventoryContainer: {fileID: 0}
-  _shopkeeperInventorySlot: {fileID: -1512704701517744418, guid: fb61cfeec6c4d654c9325aba93920a19, type: 3}
-  _shopkeeperMoney: {fileID: 0}
-  _playerInventoryContainer: {fileID: 0}
-  _playerInventorySlot: {fileID: 1995080618672033321, guid: 82ed9ec6ee51c1b4baaf08d19344817c, type: 3}
-  _playerMoney: {fileID: 0}
 --- !u!114 &904502687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9432,6 +9414,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &904502692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904502684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16be0a9ba16497f4dae043c46e2c5378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tutorialCanvas: {fileID: 2099849930}
 --- !u!1001 &917781412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10759,9 +10754,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 904502686}
-        m_TargetAssemblyTypeName: CozyGame.ShoppingCanvas, Assembly-CSharp
-        m_MethodName: Close
+      - m_Target: {fileID: 904502692}
+        m_TargetAssemblyTypeName: CozyGame.PauseMenu, Assembly-CSharp
+        m_MethodName: Unpause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13252,6 +13247,8 @@ MonoBehaviour:
   _sellItem: {fileID: 8300000, guid: 0ef3f98f3fd43ed4fa087e87de46e428, type: 3}
   _buyItem: {fileID: 8300000, guid: 0ef3f98f3fd43ed4fa087e87de46e428, type: 3}
   _cancel: {fileID: 8300000, guid: 7f8cc7a0fc3be0b43a43132b578d0a41, type: 3}
+  _paused: {fileID: 8300000, guid: 42ee33bab03c6f74e825376205b03fd9, type: 3}
+  _unpaused: {fileID: 8300000, guid: 51972b7066130b848885d9d46746d937, type: 3}
 --- !u!82 &1211027223
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14423,6 +14420,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 560349d1402e19b459a5a4c12ceb07d5, type: 3}
   - {fileID: 8300000, guid: 31a9d2ed0e1ffea449f3561b4145bbf1, type: 3}
   _audioSource: {fileID: 1859099709}
+  _pauseMenu: {fileID: 904502692}
 --- !u!50 &1309728053
 Rigidbody2D:
   serializedVersion: 4
@@ -25897,6 +25895,7 @@ GameObject:
   - component: {fileID: 2099849929}
   - component: {fileID: 2099849928}
   - component: {fileID: 2099849927}
+  - component: {fileID: 2099849930}
   m_Layer: 5
   m_Name: TutorialCanvas
   m_TagString: Untagged
@@ -25975,6 +25974,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2099849930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099849925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e6549a6c9bac943ab5c072c6ab078d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hideTimeInSeconds: 3
 --- !u!1 &2109573129
 GameObject:
   m_ObjectHideFlags: 0
