@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,9 @@ namespace CozyGame
         private CanvasGroup _canvasGroup;
 
         public bool IsInteractable { get => _canvasGroup.interactable; }
+
+        public event Action InventoryOpened;
+        public event Action InventoryClosed;
 
         private void Awake()
         {
@@ -51,6 +55,8 @@ namespace CozyGame
                 {
                     SoundEffectsManager.Instance.PlayOpenWindow();
                 }
+
+                InventoryOpened?.Invoke();
             }
             else
             {
@@ -62,6 +68,8 @@ namespace CozyGame
                 {
                     SoundEffectsManager.Instance.PlayCloseWindow(); 
                 }
+
+                InventoryClosed?.Invoke();
             }
         }
 

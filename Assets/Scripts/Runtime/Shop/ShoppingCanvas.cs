@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -27,6 +28,9 @@ namespace CozyGame
 
         public bool IsInteractable => _canvasGroup.interactable;
 
+        public event Action ShoppingOpened;
+        public event Action ShoppingClosed;
+
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
@@ -50,6 +54,8 @@ namespace CozyGame
                 {
                     SoundEffectsManager.Instance.PlayOpenWindow(); 
                 }
+
+                ShoppingOpened?.Invoke();
             }
             else
             {
@@ -61,6 +67,7 @@ namespace CozyGame
                 _canvasGroup.alpha = 0;
                 _canvasGroup.interactable = false;
                 _canvasGroup.blocksRaycasts = false;
+                ShoppingClosed?.Invoke();
             }
         }
 

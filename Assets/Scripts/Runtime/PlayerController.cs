@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace CozyGame
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(PlayerInput))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
@@ -23,6 +23,7 @@ namespace CozyGame
         [SerializeField]
         private AudioSource _audioSource;
 
+        private PlayerInput _playerInput;
         private Rigidbody2D _rigidbody2D;
         private Vector2 _moveDirection;
         private bool _isInsideShopTrigger;
@@ -31,6 +32,23 @@ namespace CozyGame
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            _playerInput = GetComponent<PlayerInput>();
+        }
+
+        private void OnEnable()
+        {
+            _inventoryCanvas.InventoryOpened += OnUIOpened;
+            _shoppingCanvas.ShoppingOpened += OnUIOpened;
+            _inventoryCanvas.InventoryClosed += OnUIClosed;
+            _shoppingCanvas.ShoppingClosed += OnUIClosed;
+        }
+
+        private void OnDisable()
+        {
+            _inventoryCanvas.InventoryOpened -= OnUIOpened;
+            _shoppingCanvas.ShoppingOpened -= OnUIOpened;
+            _inventoryCanvas.InventoryClosed -= OnUIClosed;
+            _shoppingCanvas.ShoppingClosed -= OnUIClosed;
         }
 
         private void FixedUpdate()
@@ -99,10 +117,26 @@ namespace CozyGame
             }
         }
 
+        public void OnClose()
+        {
+            _shoppingCanvas.DisplayShop(false);
+            _inventoryCanvas.DisplayInventory(false);
+        }
+
         public void PlayFootstep()
         {
             AudioClip clip = _footstepsSoundEffect[Random.Range(0, _footstepsSoundEffect.Length)];
             _audioSource.PlayOneShot(clip);
+        }
+
+        private void OnUIClosed()
+        {
+            _playerInput.SwitchCurrentActionMap("Gameplay");
+        }
+
+        private void OnUIOpened()
+        {
+            _playerInput.SwitchCurrentActionMap("UI");
         }
     }
 }
