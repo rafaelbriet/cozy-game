@@ -14,9 +14,12 @@ namespace CozyGame
         private Animator _animator;
         [SerializeField]
         private InventoryCanvas _inventoryCanvas;
+        [SerializeField]
+        private ShoppingCanvas _shoppingCanvas;
 
         private Rigidbody2D _rigidbody2D;
         private Vector2 _moveDirection;
+        private bool _isInsideShopTrigger;
 
         private void Awake()
         {
@@ -27,6 +30,23 @@ namespace CozyGame
         {
             Vector2 movePosition = (_moveDirection * _walkSpeed * Time.fixedDeltaTime) + _rigidbody2D.position;
             _rigidbody2D.MovePosition(movePosition);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("ShopTrigger"))
+            {
+                _isInsideShopTrigger = true;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("ShopTrigger"))
+            {
+                _isInsideShopTrigger = false;
+                _shoppingCanvas.DisplayShop(false);
+            }
         }
 
         public void OnMove(InputValue value)
@@ -54,6 +74,20 @@ namespace CozyGame
             }
 
             _inventoryCanvas.DisplayInventory(!_inventoryCanvas.IsInteractable);
+        }
+
+        public void OnInteract()
+        {
+            if (_shoppingCanvas == null)
+            {
+                Debug.Log("Shop is not available.", this);
+                return;
+            }
+
+            if (_isInsideShopTrigger && !_shoppingCanvas.IsInteractable)
+            {
+                _shoppingCanvas.DisplayShop(true);
+            }
         }
     }
 }
