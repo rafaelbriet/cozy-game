@@ -20,6 +20,7 @@ namespace CozyGame
         private Rigidbody2D _rigidbody2D;
         private Vector2 _moveDirection;
         private bool _isInsideShopTrigger;
+        private Inventory _shopkeeprInventory;
 
         private void Awake()
         {
@@ -37,6 +38,7 @@ namespace CozyGame
             if (collision.CompareTag("ShopTrigger"))
             {
                 _isInsideShopTrigger = true;
+                _shopkeeprInventory = collision.GetComponentInParent<Inventory>();
             }
         }
 
@@ -46,6 +48,7 @@ namespace CozyGame
             {
                 _isInsideShopTrigger = false;
                 _shoppingCanvas.DisplayShop(false);
+                _shopkeeprInventory = null;
             }
         }
 
@@ -86,7 +89,7 @@ namespace CozyGame
 
             if (_isInsideShopTrigger && !_shoppingCanvas.IsInteractable)
             {
-                _shoppingCanvas.DisplayShop(true);
+                _shoppingCanvas.DisplayShop(true, _shopkeeprInventory);
             }
         }
     }

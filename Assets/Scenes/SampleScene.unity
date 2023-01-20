@@ -1746,6 +1746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9762e7b171ec8b4429dc0b3378ba341a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shopkeeperInventoryContainer: {fileID: 1905459607}
+  _shopkeeperInventorySlot: {fileID: -1512704701517744418, guid: fb61cfeec6c4d654c9325aba93920a19, type: 3}
 --- !u!1 &473755472
 GameObject:
   m_ObjectHideFlags: 0
@@ -5998,7 +6000,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911d9c475e550d348baf8ca3f5d0e081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _items: []
+  _items:
+  - {fileID: 11400000, guid: fcfce83208ad0b84899e2d5bf2415fce, type: 2}
+  - {fileID: 11400000, guid: 090d8c3a820a0e044bad24980d390bb5, type: 2}
+  - {fileID: 11400000, guid: c52458b551dc59649b29d327c9e68643, type: 2}
+  - {fileID: 11400000, guid: a6b30f6271c028942a7c944e3db201c0, type: 2}
+  - {fileID: 11400000, guid: bfc94ad8b5b2f104b8550785767d9616, type: 2}
+  - {fileID: 11400000, guid: bc3b6d09151a61746a271a95d71786b1, type: 2}
+  - {fileID: 11400000, guid: 0fe06e4ba9eda2d49a999999996adb0e, type: 2}
+  - {fileID: 11400000, guid: bcbd0b13762aa5941844ea29f6e0f61d, type: 2}
   _equipmentSlots: []
 --- !u!4 &1096440924
 Transform:
@@ -9885,7 +9895,7 @@ GameObject:
   - component: {fileID: 1905459609}
   - component: {fileID: 1905459608}
   m_Layer: 5
-  m_Name: Content
+  m_Name: ShopkeeperInventoryContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

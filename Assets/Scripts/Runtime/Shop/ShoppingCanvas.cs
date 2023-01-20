@@ -7,7 +7,13 @@ namespace CozyGame
     [RequireComponent(typeof(CanvasGroup))]
     public class ShoppingCanvas : MonoBehaviour
     {
+        [SerializeField]
+        private RectTransform _shopkeeperInventoryContainer;
+        [SerializeField]
+        private ShopShopkeeperInventorySlot _shopkeeperInventorySlot;
+
         private CanvasGroup _canvasGroup;
+        private Inventory _shopkeeperInventory;
 
         public bool IsInteractable => _canvasGroup.interactable;
 
@@ -30,6 +36,32 @@ namespace CozyGame
                 _canvasGroup.alpha = 0;
                 _canvasGroup.interactable = false;
                 _canvasGroup.blocksRaycasts = false;
+            }
+        }
+
+        public void DisplayShop(bool display, Inventory shopkeeperInventory)
+        {
+            DisplayShop(display);
+            _shopkeeperInventory = shopkeeperInventory;
+            UpdateInventoryContent();
+        }
+
+        private void UpdateInventoryContent()
+        {
+            CleanShopkeeperInventoryContainer();
+
+            foreach (Item item in _shopkeeperInventory.Items)
+            {
+                ShopShopkeeperInventorySlot shopkeeperInventorySlot = Instantiate(_shopkeeperInventorySlot, _shopkeeperInventoryContainer);
+                shopkeeperInventorySlot.Init(item);
+            }
+        }
+
+        private void CleanShopkeeperInventoryContainer()
+        {
+            foreach (RectTransform slot in _shopkeeperInventoryContainer)
+            {
+                Destroy(slot.gameObject);
             }
         }
     }
