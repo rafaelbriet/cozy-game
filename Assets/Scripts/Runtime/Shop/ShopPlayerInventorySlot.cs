@@ -32,6 +32,12 @@ namespace CozyGame
 
         public void Sell()
         {
+            if (_shopkeeperInventory.Money < _item.Price)
+            {
+                Debug.Log("Shopkepper don't have enough money.", _shopkeeperInventory.gameObject);
+                return;
+            }
+
             _playerIventory.RemoveItem(_item);
             _playerIventory.AddMoney(_item.Price);
             _shopkeeperInventory.AddItem(_item);
