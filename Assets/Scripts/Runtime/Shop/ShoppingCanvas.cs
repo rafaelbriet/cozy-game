@@ -67,7 +67,7 @@ namespace CozyGame
             foreach (Item item in _playerInventory.Items)
             {
                 ShopPlayerInventorySlot playerInventorySlot = Instantiate(_playerInventorySlot, _playerInventoryContainer);
-                playerInventorySlot.Init(item);
+                playerInventorySlot.Init(item, _playerInventory, _shopkeeperInventory, this);
             }
         }
 
