@@ -24,12 +24,15 @@ namespace CozyGame
         private AudioSource _audioSource;
         [SerializeField]
         private PauseMenu _pauseMenu;
+        [SerializeField]
+        private DialogCanvas _dialogCanvas;
 
         private PlayerInput _playerInput;
         private Rigidbody2D _rigidbody2D;
         private Vector2 _moveDirection;
         private bool _isInsideShopTrigger;
         private Inventory _shopkeeprInventory;
+        private DialogPlayer _dialogPlayer;
 
         private void Awake()
         {
@@ -70,6 +73,11 @@ namespace CozyGame
                 _isInsideShopTrigger = true;
                 _shopkeeprInventory = collision.GetComponentInParent<Inventory>();
             }
+
+            if (collision.CompareTag("DialogTrigger"))
+            {
+                _dialogPlayer = collision.GetComponent<DialogPlayer>();
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -79,6 +87,12 @@ namespace CozyGame
                 _isInsideShopTrigger = false;
                 _shoppingCanvas.DisplayShop(false);
                 _shopkeeprInventory = null;
+            }
+
+            if (collision.CompareTag("DialogTrigger"))
+            {
+                _dialogPlayer = null;
+                _dialogCanvas.HideCanvas();
             }
         }
 
@@ -110,6 +124,31 @@ namespace CozyGame
         }
 
         public void OnInteract()
+        {
+            OpenDialog();
+        }
+
+        private void OpenDialog()
+        {
+            if (_dialogCanvas == null || _dialogPlayer == null)
+            {
+                Debug.Log("Dialog is not available.", this);
+                return;
+            }
+
+            if (_shopkeeprInventory != null)
+            {
+                _dialogCanvas.SetDialog(_dialogPlayer, () => OpenShopping());
+            }
+            else
+            {
+                _dialogCanvas.SetDialog(_dialogPlayer);
+            }
+
+            _dialogCanvas.ShowCanvas();
+        }
+
+        private void OpenShopping()
         {
             if (_shoppingCanvas == null)
             {
