@@ -18,6 +18,10 @@ namespace CozyGame
         private InventoryCanvas _inventoryCanvas;
         [SerializeField]
         private ShoppingCanvas _shoppingCanvas;
+        [SerializeField]
+        private AudioClip[] _footstepsSoundEffect;
+        [SerializeField]
+        private AudioSource _audioSource;
 
         private Rigidbody2D _rigidbody2D;
         private Vector2 _moveDirection;
@@ -93,6 +97,12 @@ namespace CozyGame
             {
                 _shoppingCanvas.DisplayShop(true, _shopkeeprInventory, _inventory);
             }
+        }
+
+        public void PlayFootstep()
+        {
+            AudioClip clip = _footstepsSoundEffect[Random.Range(0, _footstepsSoundEffect.Length)];
+            _audioSource.PlayOneShot(clip);
         }
     }
 }
