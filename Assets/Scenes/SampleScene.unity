@@ -18000,7 +18000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogText: What a wonderfull day!!!
-  _buttonText: Trade
+  _buttonText: Close
 --- !u!61 &1563937630
 BoxCollider2D:
   m_ObjectHideFlags: 0
