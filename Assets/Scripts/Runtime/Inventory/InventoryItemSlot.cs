@@ -15,9 +15,9 @@ namespace CozyGame
 
         private Item _item;
         private Inventory _inventory;
-        private InventoryCanvas _inventoryCanvas;
+        private InventoryMenu _inventoryCanvas;
 
-        public void Init(Item item, Inventory inventory, InventoryCanvas inventoryCanvas)
+        public void Init(Item item, Inventory inventory, InventoryMenu inventoryCanvas)
         {
             _item = item;
             _inventory = inventory;

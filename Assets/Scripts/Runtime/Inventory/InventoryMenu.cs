@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace CozyGame
 {
-    public class InventoryCanvas : Menu
+    public class InventoryMenu : Menu
     {
         [SerializeField]
         private Inventory _inventory;
@@ -21,45 +21,25 @@ namespace CozyGame
         protected override void Awake()
         {
             base.Awake();
-            DisplayInventory(false, false);
+            base.Close();
         }
 
-        private void Start()
+        public override void Open()
         {
+            SoundEffectsManager.Instance.PlayOpenWindow();
             UpdateInventoryContent();
+            base.Open();
         }
 
-        public void CloseInventory()
+        public override void Close()
         {
-            DisplayInventory(false);
-        }
-
-        public void DisplayInventory(bool display, bool playSoundEffects = true)
-        {
-            if (display)
-            {
-                if (playSoundEffects)
-                {
-                    SoundEffectsManager.Instance.PlayOpenWindow();
-                }
-
-                UpdateInventoryContent();
-                Open();
-            }
-            else
-            {
-                if (playSoundEffects)
-                {
-                    SoundEffectsManager.Instance.PlayCloseWindow(); 
-                }
-
-                Close();
-            }
+            SoundEffectsManager.Instance.PlayCloseWindow();
+            base.Close();
         }
 
         public void UpdateInventoryContent()
         {
-            CleanItemsContainer();
+            _itemsContainer.DestroyAllChildren();
 
             foreach (Item item in _inventory.Items)
             {
@@ -67,28 +47,12 @@ namespace CozyGame
                 itemSlot.Init(item, _inventory, this);
             }
 
-            CleanEquipmentContainer();
+            _equipementContainer.DestroyAllChildren();
 
             foreach (EquipmentSlot slot in _inventory.EquipmentSlots)
             {
                 InventoryEquipmentSlot equipmentSlot = Instantiate(_equipementSlotPrefab, _equipementContainer);
                 equipmentSlot.Init(slot, _inventory, this);
-            }
-        }
-
-        private void CleanItemsContainer()
-        {
-            foreach (RectTransform item in _itemsContainer)
-            {
-                Destroy(item.gameObject);
-            }
-        }
-
-        private void CleanEquipmentContainer()
-        {
-            foreach (RectTransform equipment in _equipementContainer)
-            {
-                Destroy(equipment.gameObject);
             }
         }
     }

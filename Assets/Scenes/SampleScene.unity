@@ -1454,7 +1454,7 @@ GameObject:
   - component: {fileID: 177537210}
   - component: {fileID: 177537209}
   m_Layer: 5
-  m_Name: InventoryCanvas
+  m_Name: InventoryMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1528,7 +1528,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 177537203}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b111c036325838499353783523f0afa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0db0e588893cdf14c859f0e9b6cff682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory: {fileID: 1309728055}
@@ -18311,8 +18311,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 177537207}
-        m_TargetAssemblyTypeName: CozyGame.InventoryCanvas, Assembly-CSharp
-        m_MethodName: CloseInventory
+        m_TargetAssemblyTypeName: CozyGame.InventoryMenu, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

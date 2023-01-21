@@ -15,7 +15,7 @@ namespace CozyGame
         [SerializeField]
         private Animator _animator;
         [SerializeField]
-        private InventoryCanvas _inventoryCanvas;
+        private InventoryMenu _inventoryCanvas;
         [SerializeField]
         private ShoppingCanvas _shoppingCanvas;
         [SerializeField]
@@ -43,8 +43,8 @@ namespace CozyGame
         private void OnEnable()
         {
             _inventoryCanvas.Opened += OnUIOpened;
+            _inventoryCanvas.Closed += OnUIClosed;
             _shoppingCanvas.Opened += OnUIOpened;
-            _inventoryCanvas.Opened += OnUIClosed;
             _shoppingCanvas.Closed += OnUIClosed;
             _pauseMenu.Opened += OnPauseMenuOpened;
             _pauseMenu.Closed += OnPauseMenuClosed;
@@ -52,9 +52,9 @@ namespace CozyGame
 
         private void OnDisable()
         {
-            _inventoryCanvas.Closed -= OnUIOpened;
-            _shoppingCanvas.Opened -= OnUIOpened;
+            _inventoryCanvas.Opened -= OnUIOpened;
             _inventoryCanvas.Closed -= OnUIClosed;
+            _shoppingCanvas.Opened -= OnUIOpened;
             _shoppingCanvas.Closed -= OnUIClosed;
             _pauseMenu.Opened -= OnPauseMenuOpened;
             _pauseMenu.Closed -= OnPauseMenuClosed;
@@ -120,7 +120,15 @@ namespace CozyGame
                 return;
             }
 
-            _inventoryCanvas.DisplayInventory(!_inventoryCanvas.IsInteractable);
+            if (_inventoryCanvas.IsInteractable)
+            {
+                _inventoryCanvas.Close();
+            }
+            else
+            {
+                _inventoryCanvas.Open();
+            }
+            
         }
 
         public void OnInteract()
@@ -165,7 +173,7 @@ namespace CozyGame
         public void OnClose()
         {
             _shoppingCanvas.DisplayShop(false);
-            _inventoryCanvas.DisplayInventory(false);
+            _inventoryCanvas.Close();
         }
 
         public void OnPause()

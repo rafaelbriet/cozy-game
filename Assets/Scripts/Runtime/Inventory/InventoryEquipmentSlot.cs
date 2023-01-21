@@ -15,9 +15,9 @@ namespace CozyGame
 
         private EquipmentSlot _equipmentSlot;
         private Inventory _inventory;
-        private InventoryCanvas _inventoryCanvas;
+        private InventoryMenu _inventoryCanvas;
 
-        public void Init(EquipmentSlot equipmentSlot, Inventory inventory, InventoryCanvas inventoryCanvas)
+        public void Init(EquipmentSlot equipmentSlot, Inventory inventory, InventoryMenu inventoryCanvas)
         {
             _equipmentSlot = equipmentSlot;
             _inventory = inventory;
