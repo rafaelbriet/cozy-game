@@ -3134,8 +3134,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 433202833}
-        m_TargetAssemblyTypeName: CozyGame.ShoppingCanvas, Assembly-CSharp
-        m_MethodName: CloseShop
+        m_TargetAssemblyTypeName: CozyGame.ShoppingMenu, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3359,11 +3359,11 @@ GameObject:
   - component: {fileID: 433202832}
   - component: {fileID: 433202831}
   - component: {fileID: 433202830}
-  - component: {fileID: 433202833}
   - component: {fileID: 433202835}
   - component: {fileID: 433202834}
+  - component: {fileID: 433202833}
   m_Layer: 5
-  m_Name: ShoppingCanvas
+  m_Name: ShoppingMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

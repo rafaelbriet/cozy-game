@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace CozyGame
 {
-    public class ShoppingCanvas : Menu
+    public class ShoppingMenu : Menu
     {
         [SerializeField]
         private RectTransform _shopkeeperInventoryContainer;
@@ -27,47 +27,32 @@ namespace CozyGame
         protected override void Awake()
         {
             base.Awake();
-            DisplayShop(false, false);
+            base.Close();
         }
 
-        public void CloseShop()
+        public override void Open()
         {
-            DisplayShop(false);
+            SoundEffectsManager.Instance.PlayOpenWindow();
+            UpdateInventoryContent();
+            base.Open();
         }
 
-        public void DisplayShop(bool display, bool playSoundEffects = true)
+        public override void Close()
         {
-            if (display)
-            {
-                if (playSoundEffects)
-                {
-                    SoundEffectsManager.Instance.PlayOpenWindow(); 
-                }
-
-                Open();
-            }
-            else
-            {
-                if (playSoundEffects && IsInteractable)
-                {
-                    SoundEffectsManager.Instance.PlayCloseWindow();
-                }
-
-                Close();
-            }
+            SoundEffectsManager.Instance.PlayCloseWindow();
+            base.Close();
         }
 
-        public void DisplayShop(bool display, Inventory shopkeeperInventory, Inventory playerInventory)
+        public void SetUpShop(Inventory shopkeeperInventory, Inventory playerInventory)
         {
-            DisplayShop(display);
             _shopkeeperInventory = shopkeeperInventory;
             _playerInventory = playerInventory;
-            UpdateInventoryContent();
         }
 
         public void UpdateInventoryContent()
         {
-            CleanShopkeeperInventoryContainer();
+            _shopkeeperMoney.SetText(_shopkeeperInventory.Money.ToString());
+            _shopkeeperInventoryContainer.DestroyAllChildren();
 
             foreach (Item item in _shopkeeperInventory.Items)
             {
@@ -75,32 +60,13 @@ namespace CozyGame
                 shopkeeperInventorySlot.Init(item, _playerInventory, _shopkeeperInventory, this);
             }
 
-            _shopkeeperMoney.SetText(_shopkeeperInventory.Money.ToString());
-
-            CleanPlayerInventoryContainer();
+            _playerMoney.SetText(_playerInventory.Money.ToString());
+            _playerInventoryContainer.DestroyAllChildren();
 
             foreach (Item item in _playerInventory.Items)
             {
                 ShopPlayerInventorySlot playerInventorySlot = Instantiate(_playerInventorySlot, _playerInventoryContainer);
                 playerInventorySlot.Init(item, _playerInventory, _shopkeeperInventory, this);
-            }
-
-            _playerMoney.SetText(_playerInventory.Money.ToString());
-        }
-
-        private void CleanShopkeeperInventoryContainer()
-        {
-            foreach (RectTransform slot in _shopkeeperInventoryContainer)
-            {
-                Destroy(slot.gameObject);
-            }
-        }
-
-        private void CleanPlayerInventoryContainer()
-        {
-            foreach (RectTransform slot in _playerInventoryContainer)
-            {
-                Destroy(slot.gameObject);
             }
         }
     }

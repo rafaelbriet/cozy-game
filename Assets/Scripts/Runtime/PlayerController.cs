@@ -17,7 +17,7 @@ namespace CozyGame
         [SerializeField]
         private InventoryMenu _inventoryCanvas;
         [SerializeField]
-        private ShoppingCanvas _shoppingCanvas;
+        private ShoppingMenu _shoppingCanvas;
         [SerializeField]
         private AudioClip[] _footstepsSoundEffect;
         [SerializeField]
@@ -85,7 +85,6 @@ namespace CozyGame
             if (collision.CompareTag("ShopTrigger"))
             {
                 _isInsideShopTrigger = false;
-                _shoppingCanvas.DisplayShop(false);
                 _shopkeeprInventory = null;
             }
 
@@ -166,13 +165,14 @@ namespace CozyGame
 
             if (_isInsideShopTrigger && !_shoppingCanvas.IsInteractable)
             {
-                _shoppingCanvas.DisplayShop(true, _shopkeeprInventory, _inventory);
+                _shoppingCanvas.SetUpShop(_shopkeeprInventory, _inventory);
+                _shoppingCanvas.Open();
             }
         }
 
         public void OnClose()
         {
-            _shoppingCanvas.DisplayShop(false);
+            _shoppingCanvas.Close();
             _inventoryCanvas.Close();
         }
 
