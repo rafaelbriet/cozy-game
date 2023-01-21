@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d4174bc9a6ae44786bf54994b0cc79, type: 3}
+  m_Name: Chest_Skull
+  m_EditorClassIdentifier: 
+  _itemName: Skull
+  _price: 10
+  _icon: {fileID: -1853934310, guid: 974207662b7cdb04e9b6a82a451bfdec, type: 3}
+  _equipmentType: 2
+  _spriteLibrary: {fileID: 7108339969198208228, guid: ded09e97da56d6f4dbd64423fc6d6478, type: 3}

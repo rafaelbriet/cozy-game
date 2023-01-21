@@ -12621,13 +12621,23 @@ MonoBehaviour:
   _money: 250
   _items:
   - {fileID: 11400000, guid: fcfce83208ad0b84899e2d5bf2415fce, type: 2}
+  - {fileID: 11400000, guid: c1297bc71aabbb043bb4d384205aaf55, type: 2}
+  - {fileID: 11400000, guid: 911c71f2e43194045a03a33c29c5a5e5, type: 2}
+  - {fileID: 11400000, guid: 7c5c1d81eed8db947886b7028142543b, type: 2}
   - {fileID: 11400000, guid: 090d8c3a820a0e044bad24980d390bb5, type: 2}
   - {fileID: 11400000, guid: c52458b551dc59649b29d327c9e68643, type: 2}
+  - {fileID: 11400000, guid: 7e3473d66adde864ba428b4381205774, type: 2}
+  - {fileID: 11400000, guid: 8ea2b4e2466e5084e93aa5da3d3884ee, type: 2}
+  - {fileID: 11400000, guid: 71e5d6fe87fe7c44ca03014a9f190395, type: 2}
   - {fileID: 11400000, guid: a6b30f6271c028942a7c944e3db201c0, type: 2}
   - {fileID: 11400000, guid: bfc94ad8b5b2f104b8550785767d9616, type: 2}
+  - {fileID: 11400000, guid: 6e6139dc0442beb468b0a9e5fe4cb276, type: 2}
   - {fileID: 11400000, guid: bc3b6d09151a61746a271a95d71786b1, type: 2}
+  - {fileID: 11400000, guid: 82f1e1d3745eeaa488c17b68854513e7, type: 2}
+  - {fileID: 11400000, guid: ba3eba6f99b2bdc4da8a6bf65627633b, type: 2}
   - {fileID: 11400000, guid: 0fe06e4ba9eda2d49a999999996adb0e, type: 2}
   - {fileID: 11400000, guid: bcbd0b13762aa5941844ea29f6e0f61d, type: 2}
+  - {fileID: 11400000, guid: 27d5c6fadf0585e4c9017b76de436bb9, type: 2}
   _equipmentSlots: []
 --- !u!4 &1096440924
 Transform:
@@ -16263,7 +16273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911d9c475e550d348baf8ca3f5d0e081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _money: 50
+  _money: 100
   _items:
   - {fileID: 11400000, guid: fcfce83208ad0b84899e2d5bf2415fce, type: 2}
   - {fileID: 11400000, guid: a6b30f6271c028942a7c944e3db201c0, type: 2}
