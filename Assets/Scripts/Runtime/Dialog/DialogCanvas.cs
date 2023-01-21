@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 namespace CozyGame
 {
-    [RequireComponent(typeof(CanvasGroup))]
-    public class DialogCanvas : MonoBehaviour
+    public class DialogCanvas : Menu
     {
         [SerializeField]
         private TextMeshProUGUI _dialogText;
@@ -16,24 +15,19 @@ namespace CozyGame
         [SerializeField]
         private TextMeshProUGUI _buttonText;
 
-        private CanvasGroup _canvasGroup;
         private bool _playSoundeffects;
 
-        public bool IsInteractable => _canvasGroup.interactable;
-
-        private void Awake()
+        protected override void Awake()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
-            HideCanvas();
+            base.Awake();
+            Close();
             _playSoundeffects = true;
         }
 
         public void ShowCanvas()
         {
-            _canvasGroup.alpha = 1;
-            _canvasGroup.interactable = true;
-            _canvasGroup.blocksRaycasts = true;
             SoundEffectsManager.Instance.PlayOpenWindow();
+            Open();
         }
 
         public void HideCanvas()
@@ -43,9 +37,7 @@ namespace CozyGame
                 SoundEffectsManager.Instance.PlayCloseWindow();
             }
 
-            _canvasGroup.alpha = 0;
-            _canvasGroup.interactable = false;
-            _canvasGroup.blocksRaycasts = false;
+            Close();
         }
 
         public void SetDialog(DialogPlayer dialogPlayer, UnityAction action = null)

@@ -4,33 +4,26 @@ using UnityEngine;
 
 namespace CozyGame
 {
-    [RequireComponent(typeof(CanvasGroup))]
-    public class TutorialCanvas : MonoBehaviour
+    public class TutorialCanvas : Menu
     {
         [SerializeField]
         private float _hideTimeInSeconds = 10f;
 
-        private CanvasGroup _canvasGroup;
-
-        private void Awake()
+        protected override void Awake()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
+            base.Awake();
             StartCoroutine(HideCoroutine());
         }
 
         public void ShowCanvas()
         {
             StopAllCoroutines();
-            _canvasGroup.alpha = 1;
-            _canvasGroup.interactable = true;
-            _canvasGroup.blocksRaycasts = true;
+            Open();
         }
 
         public void HideCanvas()
         {
-            _canvasGroup.alpha = 0;
-            _canvasGroup.interactable = false;
-            _canvasGroup.blocksRaycasts = false;
+            Close();
         }
 
         private IEnumerator HideCoroutine()

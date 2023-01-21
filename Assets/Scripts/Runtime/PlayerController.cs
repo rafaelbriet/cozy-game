@@ -42,20 +42,20 @@ namespace CozyGame
 
         private void OnEnable()
         {
-            _inventoryCanvas.InventoryOpened += OnUIOpened;
-            _shoppingCanvas.ShoppingOpened += OnUIOpened;
-            _inventoryCanvas.InventoryClosed += OnUIClosed;
-            _shoppingCanvas.ShoppingClosed += OnUIClosed;
+            _inventoryCanvas.Opened += OnUIOpened;
+            _shoppingCanvas.Opened += OnUIOpened;
+            _inventoryCanvas.Opened += OnUIClosed;
+            _shoppingCanvas.Closed += OnUIClosed;
             _pauseMenu.Opened += OnPauseMenuOpened;
             _pauseMenu.Closed += OnPauseMenuClosed;
         }
 
         private void OnDisable()
         {
-            _inventoryCanvas.InventoryOpened -= OnUIOpened;
-            _shoppingCanvas.ShoppingOpened -= OnUIOpened;
-            _inventoryCanvas.InventoryClosed -= OnUIClosed;
-            _shoppingCanvas.ShoppingClosed -= OnUIClosed;
+            _inventoryCanvas.Closed -= OnUIOpened;
+            _shoppingCanvas.Opened -= OnUIOpened;
+            _inventoryCanvas.Closed -= OnUIClosed;
+            _shoppingCanvas.Closed -= OnUIClosed;
             _pauseMenu.Opened -= OnPauseMenuOpened;
             _pauseMenu.Closed -= OnPauseMenuClosed;
         }

@@ -5,8 +5,7 @@ using UnityEngine;
 
 namespace CozyGame
 {
-    [RequireComponent(typeof(CanvasGroup))]
-    public class InventoryCanvas : MonoBehaviour
+    public class InventoryCanvas : Menu
     {
         [SerializeField]
         private Inventory _inventory;
@@ -19,16 +18,9 @@ namespace CozyGame
         [SerializeField]
         private InventoryEquipmentSlot _equipementSlotPrefab;
 
-        private CanvasGroup _canvasGroup;
-
-        public bool IsInteractable { get => _canvasGroup.interactable; }
-
-        public event Action InventoryOpened;
-        public event Action InventoryClosed;
-
-        private void Awake()
+        protected override void Awake()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
+            base.Awake();
             DisplayInventory(false, false);
         }
 
@@ -37,7 +29,7 @@ namespace CozyGame
             UpdateInventoryContent();
         }
 
-        public void Close()
+        public void CloseInventory()
         {
             DisplayInventory(false);
         }
@@ -46,30 +38,22 @@ namespace CozyGame
         {
             if (display)
             {
-                _canvasGroup.alpha = 1;
-                _canvasGroup.interactable = true;
-                _canvasGroup.blocksRaycasts = true;
-                UpdateInventoryContent();
-
                 if (playSoundEffects)
                 {
                     SoundEffectsManager.Instance.PlayOpenWindow();
                 }
 
-                InventoryOpened?.Invoke();
+                UpdateInventoryContent();
+                Open();
             }
             else
             {
-                _canvasGroup.alpha = 0;
-                _canvasGroup.interactable = false;
-                _canvasGroup.blocksRaycasts = false;
-
                 if (playSoundEffects)
                 {
                     SoundEffectsManager.Instance.PlayCloseWindow(); 
                 }
 
-                InventoryClosed?.Invoke();
+                Close();
             }
         }
 

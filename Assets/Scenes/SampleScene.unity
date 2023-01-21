@@ -2905,7 +2905,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 433202833}
         m_TargetAssemblyTypeName: CozyGame.ShoppingCanvas, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17721,7 +17721,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 177537207}
         m_TargetAssemblyTypeName: CozyGame.InventoryCanvas, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

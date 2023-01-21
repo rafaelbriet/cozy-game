@@ -6,8 +6,7 @@ using UnityEngine;
 
 namespace CozyGame
 {
-    [RequireComponent(typeof(CanvasGroup))]
-    public class ShoppingCanvas : MonoBehaviour
+    public class ShoppingCanvas : Menu
     {
         [SerializeField]
         private RectTransform _shopkeeperInventoryContainer;
@@ -22,22 +21,16 @@ namespace CozyGame
         [SerializeField]
         private TextMeshProUGUI _playerMoney;
 
-        private CanvasGroup _canvasGroup;
         private Inventory _shopkeeperInventory;
         private Inventory _playerInventory;
 
-        public bool IsInteractable => _canvasGroup.interactable;
-
-        public event Action ShoppingOpened;
-        public event Action ShoppingClosed;
-
-        private void Awake()
+        protected override void Awake()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
+            base.Awake();
             DisplayShop(false, false);
         }
 
-        public void Close()
+        public void CloseShop()
         {
             DisplayShop(false);
         }
@@ -46,16 +39,12 @@ namespace CozyGame
         {
             if (display)
             {
-                _canvasGroup.alpha = 1;
-                _canvasGroup.interactable = true;
-                _canvasGroup.blocksRaycasts = true;
-                
                 if (playSoundEffects)
                 {
                     SoundEffectsManager.Instance.PlayOpenWindow(); 
                 }
 
-                ShoppingOpened?.Invoke();
+                Open();
             }
             else
             {
@@ -64,10 +53,7 @@ namespace CozyGame
                     SoundEffectsManager.Instance.PlayCloseWindow();
                 }
 
-                _canvasGroup.alpha = 0;
-                _canvasGroup.interactable = false;
-                _canvasGroup.blocksRaycasts = false;
-                ShoppingClosed?.Invoke();
+                Close();
             }
         }
 

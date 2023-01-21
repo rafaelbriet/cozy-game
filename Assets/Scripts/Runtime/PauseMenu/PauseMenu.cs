@@ -3,39 +3,29 @@ using UnityEngine;
 
 namespace CozyGame
 {
-    [RequireComponent(typeof(CanvasGroup))]
-    public class PauseMenu : MonoBehaviour
+    public class PauseMenu : Menu
     {
         [SerializeField]
         private TutorialCanvas _tutorialCanvas;
 
-        private CanvasGroup _canvasGroup;
-
-        public event Action Opened;
-        public event Action Closed;
-
-        public bool IsInteractable => _canvasGroup.interactable;
-
-        private void Awake()
+        protected override void Awake()
         {
-            _canvasGroup = GetComponent<CanvasGroup>();
-            HideCanvas();
+            base.Awake();
+            Close();
         }
 
         public void Pause()
         {
-            ShowCanvas();
-            _tutorialCanvas.ShowCanvas();
             SoundEffectsManager.Instance.PlayPaused();
-            Opened?.Invoke();
+            _tutorialCanvas.ShowCanvas();
+            Open();
         }
 
         public void Unpause()
         {
-            HideCanvas();
-            _tutorialCanvas.HideCanvas();
             SoundEffectsManager.Instance.PlayUnpause();
-            Closed?.Invoke();
+            _tutorialCanvas.HideCanvas();
+            Close();
         }
 
         public void Quit()
@@ -46,20 +36,6 @@ namespace CozyGame
 #else
         Application.Quit();
 #endif
-        }
-
-        private void ShowCanvas()
-        {
-            _canvasGroup.alpha = 1;
-            _canvasGroup.interactable = true;
-            _canvasGroup.blocksRaycasts = true;
-        }
-
-        private void HideCanvas()
-        {
-            _canvasGroup.alpha = 0;
-            _canvasGroup.interactable = false;
-            _canvasGroup.blocksRaycasts = false;
         }
     }
 }
