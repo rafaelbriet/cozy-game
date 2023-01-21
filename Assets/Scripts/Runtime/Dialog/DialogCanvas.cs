@@ -19,6 +19,8 @@ namespace CozyGame
         private CanvasGroup _canvasGroup;
         private bool _playSoundeffects;
 
+        public bool IsInteractable => _canvasGroup.interactable;
+
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
@@ -36,14 +38,14 @@ namespace CozyGame
 
         public void HideCanvas()
         {
-            _canvasGroup.alpha = 0;
-            _canvasGroup.interactable = false;
-            _canvasGroup.blocksRaycasts = false;
-
-            if (_playSoundeffects)
+            if (_playSoundeffects && IsInteractable)
             {
                 SoundEffectsManager.Instance.PlayCloseWindow();
             }
+
+            _canvasGroup.alpha = 0;
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
         }
 
         public void SetDialog(DialogPlayer dialogPlayer, UnityAction action = null)
