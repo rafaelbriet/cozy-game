@@ -25,7 +25,7 @@ namespace CozyGame
         [SerializeField]
         private PauseMenu _pauseMenu;
         [SerializeField]
-        private DialogCanvas _dialogCanvas;
+        private DialogMenu _dialogCanvas;
 
         private PlayerInput _playerInput;
         private Rigidbody2D _rigidbody2D;
@@ -91,7 +91,7 @@ namespace CozyGame
             if (collision.CompareTag("DialogTrigger"))
             {
                 _dialogPlayer = null;
-                _dialogCanvas.HideCanvas();
+                _dialogCanvas.Close();
             }
         }
 
@@ -152,7 +152,7 @@ namespace CozyGame
                 _dialogCanvas.SetDialog(_dialogPlayer);
             }
 
-            _dialogCanvas.ShowCanvas();
+            _dialogCanvas.Open();
         }
 
         private void OpenShopping()

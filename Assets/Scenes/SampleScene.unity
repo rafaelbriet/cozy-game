@@ -736,19 +736,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 77390899}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1756114315}
-        m_TargetAssemblyTypeName: CozyGame.DialogCanvas, Assembly-CSharp
-        m_MethodName: HideCanvas
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &77390899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8154,9 +8142,9 @@ RectTransform:
   m_Children:
   - {fileID: 177537204}
   - {fileID: 433202828}
+  - {fileID: 1756114310}
   - {fileID: 904502685}
   - {fileID: 2099849926}
-  - {fileID: 1756114310}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10773,7 +10761,7 @@ RectTransform:
   m_Children:
   - {fileID: 463118036}
   m_Father: {fileID: 875394995}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -19735,7 +19723,7 @@ GameObject:
   - component: {fileID: 1756114311}
   - component: {fileID: 1756114315}
   m_Layer: 5
-  m_Name: DialogCanvas
+  m_Name: DialogMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19755,7 +19743,7 @@ RectTransform:
   m_Children:
   - {fileID: 200412489}
   m_Father: {fileID: 875394995}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -29557,7 +29545,7 @@ RectTransform:
   m_Children:
   - {fileID: 1588940350}
   m_Father: {fileID: 875394995}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

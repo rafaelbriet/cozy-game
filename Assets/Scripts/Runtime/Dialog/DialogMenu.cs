@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace CozyGame
 {
-    public class DialogCanvas : Menu
+    public class DialogMenu : Menu
     {
         [SerializeField]
         private TextMeshProUGUI _dialogText;
@@ -15,29 +15,26 @@ namespace CozyGame
         [SerializeField]
         private TextMeshProUGUI _buttonText;
 
-        private bool _playSoundeffects;
-
         protected override void Awake()
         {
             base.Awake();
-            Close();
-            _playSoundeffects = true;
+            base.Close();
         }
 
-        public void ShowCanvas()
+        public override void Open()
         {
             SoundEffectsManager.Instance.PlayOpenWindow();
-            Open();
+            base.Open();
         }
 
-        public void HideCanvas()
+        public override void Close()
         {
-            if (_playSoundeffects && IsInteractable)
+            if (IsInteractable)
             {
-                SoundEffectsManager.Instance.PlayCloseWindow();
+                SoundEffectsManager.Instance.PlayCloseWindow(); 
             }
 
-            Close();
+            base.Close();
         }
 
         public void SetDialog(DialogPlayer dialogPlayer, UnityAction action = null)
@@ -47,11 +44,14 @@ namespace CozyGame
 
             if (action != null)
             {
+                _button.onClick.RemoveAllListeners();
                 _button.onClick.AddListener(action);
+                _button.onClick.AddListener(() => base.Close());
             }
             else
             {
                 _button.onClick.RemoveAllListeners();
+                _button.onClick.AddListener(() => Close());
             }
         }
     }
