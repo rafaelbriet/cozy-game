@@ -11,21 +11,21 @@ namespace CozyGame
         protected override void Awake()
         {
             base.Awake();
-            Close();
+            base.Close();
         }
 
-        public void Pause()
+        public override void Open()
         {
             SoundEffectsManager.Instance.PlayPaused();
             _tutorialCanvas.ShowCanvas();
-            Open();
+            base.Open();
         }
 
-        public void Unpause()
+        public override void Close()
         {
             SoundEffectsManager.Instance.PlayUnpause();
             _tutorialCanvas.HideCanvas();
-            Close();
+            base.Close();
         }
 
         public void Quit()

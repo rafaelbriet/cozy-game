@@ -184,7 +184,7 @@ namespace CozyGame
                 return;
             }
 
-            _pauseMenu.Pause();
+            _pauseMenu.Open();
         }
 
         public void OnUnpause()
@@ -195,7 +195,7 @@ namespace CozyGame
                 return;
             }
 
-            _pauseMenu.Unpause();
+            _pauseMenu.Close();
         }
 
         public void PlayFootstep()
