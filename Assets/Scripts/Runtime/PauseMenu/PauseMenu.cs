@@ -6,7 +6,7 @@ namespace CozyGame
     public class PauseMenu : Menu
     {
         [SerializeField]
-        private TutorialCanvas _tutorialCanvas;
+        private TutorialMenu _tutorialCanvas;
 
         protected override void Awake()
         {
@@ -17,14 +17,14 @@ namespace CozyGame
         public override void Open()
         {
             SoundEffectsManager.Instance.PlayPaused();
-            _tutorialCanvas.ShowCanvas();
+            _tutorialCanvas.Open();
             base.Open();
         }
 
         public override void Close()
         {
             SoundEffectsManager.Instance.PlayUnpause();
-            _tutorialCanvas.HideCanvas();
+            _tutorialCanvas.Close();
             base.Close();
         }
 

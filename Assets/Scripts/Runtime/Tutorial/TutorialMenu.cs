@@ -4,32 +4,27 @@ using UnityEngine;
 
 namespace CozyGame
 {
-    public class TutorialCanvas : Menu
+    public class TutorialMenu : Menu
     {
         [SerializeField]
         private float _hideTimeInSeconds = 10f;
 
         protected override void Awake()
         {
-            base.Awake();
             StartCoroutine(HideCoroutine());
+            base.Awake();
         }
 
-        public void ShowCanvas()
+        public override void Open()
         {
             StopAllCoroutines();
-            Open();
-        }
-
-        public void HideCanvas()
-        {
-            Close();
+            base.Open();
         }
 
         private IEnumerator HideCoroutine()
         {
             yield return new WaitForSeconds(_hideTimeInSeconds);
-            HideCanvas();
+            base.Close();
         }
     }
 }
